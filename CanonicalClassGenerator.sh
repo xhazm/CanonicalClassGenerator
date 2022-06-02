@@ -50,7 +50,7 @@ function create_cpp_class_from_template()
 #	Loops through input arguments, beginning with 1, creates Header and Cpp files from argv	#
 for ((i=1; i<argc; i++));
 do
-	src_names+=${argv[i]}.cpp   #saves src-names for makefile
+	src_names+=${argv[i]}.cpp' '   #saves src-names for makefile
 	create_hpp_class_from_template ${argv[i]}
 	create_cpp_class_from_template ${argv[i]}
 	echo "$INDICATOR ${argv[i]}.cpp & ${argv[i]}.hpp created in folder: $FOLDER"
@@ -58,8 +58,7 @@ done
 
 #	Creates tmp Makefile and sets SRC of makefile to src_names	#
 cp $TEMPLATE_MAKE $TMP_MAKE_FOLDER
-sed -i '' -e 's/ClassName/'$src_names'/g' $TMP_MAKE_FOLDER*
-sed -i '' -e 's/.cpp/.cpp /g' $TMP_MAKE_FOLDER*
+sed -i ' ' -e "s/ClassName/$src_names/g" $TMP_MAKE_FOLDER*
 echo "$INDICATOR Makefile created in folder: $FOLDER"
 
 
