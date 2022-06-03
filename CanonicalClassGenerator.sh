@@ -53,15 +53,16 @@ do
 	src_names+=${argv[i]}.cpp' '   #saves src-names for makefile
 	create_hpp_class_from_template ${argv[i]}
 	create_cpp_class_from_template ${argv[i]}
-	echo "$INDICATOR ${argv[i]}.cpp & ${argv[i]}.hpp created in folder: $FOLDER"
+	echo "$INDICATOR ${argv[i]}.cpp & ${argv[i]}.hpp created in folder: $FOLDER'src' & $FOLDER'inc'"
 done
 
 #	Creates tmp Makefile and sets SRC of makefile to src_names	#
 cp $TEMPLATE_MAKE $TMP_MAKE_FOLDER
-sed -i ' ' -e "s/ClassName/$src_names/g" $TMP_MAKE_FOLDER*
+sed -i '' -e "s/ClassName/$src_names/g" $TMP_MAKE_FOLDER*
 echo "$INDICATOR Makefile created in folder: $FOLDER"
 
-
-mv $TMP_CPP_FOLDER* $FOLDER
-mv $TMP_HPP_FOLDER* $FOLDER
+mkdir $FOLDER/src
+mkdir $FOLDER/inc
+mv $TMP_CPP_FOLDER* $FOLDER/src/
+mv $TMP_HPP_FOLDER* $FOLDER/inc/
 mv $TMP_MAKE_FOLDER* $FOLDER

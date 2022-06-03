@@ -1,6 +1,6 @@
 CC = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
-NAME = 
+NAME = main
 SRC = ClassName
 OBJ = $(patsubst %.cpp,%.o,$(SRC))
 
