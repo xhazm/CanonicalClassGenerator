@@ -29,6 +29,11 @@ TEMPLATE_MAKE="./templates/makefile/Makefile"
 argv=("$@")
 argc=$#
 
+#	Create tmp folders	#
+mkdir $TMP_CPP_FOLDER
+mkdir $TMP_HPP_FOLDER
+mkdir $TMP_MAKE_FOLDER
+
 #	Creates tmp header from template and renames it with given class name	#
 function create_hpp_class_from_template()
 {
@@ -66,3 +71,8 @@ mkdir $FOLDER/inc
 mv $TMP_CPP_FOLDER* $FOLDER/src/
 mv $TMP_HPP_FOLDER* $FOLDER/inc/
 mv $TMP_MAKE_FOLDER* $FOLDER
+
+#	Remove tmp folders	#
+rm -r $TMP_CPP_FOLDER
+rm -r $TMP_HPP_FOLDER
+rm -r $TMP_MAKE_FOLDER
